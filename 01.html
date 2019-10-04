@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <style type="text/css">
+        #demo1{width:1000px; margin:0px auto; }
+        #bImg{float:left; margin-right:10px;}
+        .item{width:350px;line-height:30px;background:#f7f7f7;border:1px solid #f7f7f7;margin:10px 10px;float:left;}
+        .select{ border:1px solid blue;}
+        .s{margin-left: 50px}
+    </style>
+</head>
+<body>
+<div id="demo1">
+    <img id="bImg"  :src="list[c].bigimg"/>
+    <p class="s">颜色选择</p>
+
+    <div class="item" v-for="(item,index) in list" :class=[{'select':c==index}] @click="doClick(index)">
+        <img :style="smallimg"  :src="item.bigimg" />
+        {{item.text}}
+    </div>
+</div>
+<script>
+    new Vue({
+        el:'#demo1',
+        data(){
+            return{
+                list:[{
+                    bigimg:'img/01.jpg',
+                    text:'印花魔法绒床垫法莱绒床褥家用榻榻米垫'
+                },{
+                    bigimg:'img/02.jpg',
+                    text:'印花魔法绒床垫法莱绒床褥家用榻榻米垫'
+                },{
+                    bigimg:'img/03.jpg',
+                    text:'印花魔法绒床垫法莱绒床褥家用榻榻米垫'
+                },{
+                    bigimg:'img/04.jpg',
+                    text:'印花魔法绒床垫法莱绒床褥家用榻榻米垫'
+                }],
+                c:0,
+                smallimg:'width: 50px;height: 50px;vertical-align:middle;',
+                style1:'margin-left:20px'
+            }
+        },
+        methods:{
+            doClick:function (index){
+                this.c = index
+            }
+        }
+    })
+</script>
+</body>
+</html>
